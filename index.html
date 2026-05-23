@@ -1,1 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="='width=device-width, initial-scale=1.0">
+    <title>Apex Kanban</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="main-header">
+        <h1>Apex Kanban</h1>
+        <p>Next-gen task management platform</p>
+    </header>
 
+    <main class="kanban-board">
+        <div class="kanban-columns">
+
+            <section class="kanban-column" id="todo-column">
+                <h2>To Do</h2>
+                <div class="card-list" id="todo-list">
+
+                </div>
+            </section>
+
+            <section class="kanban-column" id="inprogress-column">
+                <h2>In Progress</h2>
+                <div class="card-list" id="inprogress-list"></div>
+            </section>
+
+            <section class="kanban-column" id="done-column">
+                <h2>Done</h2>
+                <div class="card-list" id="done-list"></div>
+            </section>
+
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>    
+</html>
