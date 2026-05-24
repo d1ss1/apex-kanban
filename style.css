@@ -1,1 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+body {
+    font-family: "Inter", sans-serif;
+    color: #ffffff;
+    min-height: 100vh;
+
+    background: 
+    radial-gradient(circle at 15% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 85% 80%, rgba(6, 182, 212, 0.12) 0%, transparent 50%), #080b11;
+    background-attachment:  fixed;
+
+    -webkit-font-smothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+.kanban-board {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.kanban-columns {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start; /* Колонки не будут растягиваться по высоте друг за другом */
+}
+
+.kanban-column {
+    flex: 1; /* Колонки делят экран поровну */
+    min-height: 500px; /* Временная высота, чтобы мы видели пустые колонки */
+    padding: 24px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.35);
+}
+
+.kanban-column h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: rgba(255, 255, 255, 0.85);
+    letter-spacing: 0.5px; /* межбуквенный интервал */
+}
+
+.kanban-cards {
+    display: flex;
+    flex-direction: column; /* разворачивает главную ось флексбокса на 90 градусов */
+    gap: 16px;
+}
+
+.kanban-card {
+    padding: 16px;
+    border-radius: 12px;
+    cursor: grab;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.25s ease;
+}
+
+.kanban-card p {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.kanban-card:hover {
+    background: rgba(255, 255, 255, 0.09);
+    border-color: rgba(255, 255, 255, 0.25);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4);
+}
+
+.board-header {
+    display: flex;
+    justify-content: space-between; /* Отбросить текст влево, а кнопку вправо */
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.header-text h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 4px;
+}
+
+.header-text p {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.btn-add {
+    background: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 12px 24px;
+    border: 10px;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);  
+    transition: all 0.6s ease;  
+}
+
+.btn-add:hover {
+    background: (255, 255, 255, 0.12);
+    border-color: rgba(99, 102, 241, 0.4);
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+    transform: translateY(-2px);
+}
