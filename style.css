@@ -59,12 +59,31 @@ body {
 }
 
 .kanban-card {
-    padding: 16px;
-    border-radius: 12px;
+display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    padding: 15px 20px;
+    margin-bottom: 5px;
+    
+
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    
+
+    border: 1px solid rgba(255, 255, 255, 0.15); 
+    border-radius: 14px; 
+    
+
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2),
+                inset 0 1px 1px 0 rgba(255, 255, 255, 0.1);
+                
+    color: #ffffff; 
+    font-weight: 500;
+    
     cursor: grab;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: all 0.25s ease;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .kanban-card p {
@@ -75,8 +94,12 @@ body {
 .kanban-card:hover {
     background: rgba(255, 255, 255, 0.09);
     border-color: rgba(255, 255, 255, 0.25);
-    transform: translateY(-4px);
-    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+}
+
+.kanban-card:active {
+    cursor: grabbing;
 }
 
 .board-header {
@@ -219,4 +242,26 @@ body {
     display: flex;
     flex-direction: column;
     gap: 15px;
+}
+
+.btn-delete {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-delete:hover {
+    background: rgba(239, 68, 68, 0.2);
+    border-color: rgba(239, 68, 68, 0.4);
+    color: #ef4444;
+    box-shadow: 0 0 10px rgba(239, 68, 68, 0.3);
 }
