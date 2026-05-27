@@ -213,3 +213,10 @@ body {
     transform: translateY(-1px);
     box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
 }
+
+.card-list {
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
