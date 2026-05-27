@@ -4,6 +4,7 @@ const btnCreate = document.querySelector('.btn-create');
 const btnCancel = document.querySelector('.btn-cancel');
 const modalInput = document.querySelector('.modal-input');
 const todoList = document.querySelector('#todo-list');
+const allColumns = document.querySelectorAll('.card-list');
 
 
 btnAdd.addEventListener('click', function() {
@@ -32,11 +33,35 @@ btnCreate.addEventListener('click', function() {
 
     const newCard = document.createElement('div');
     newCard.classList.add('kanban-card');
+    newCard.setAttribute('draggable', 'true');
+
 
     newCard.innerHTML = `<p>${taskText}</p>`;
+    
+    newCard.addEventListener('dragstart', function() {
+        newCard.classList.add('dragging');
+    });
+
+    newCard.addEventListener('dragend', function() {
+        newCard.classList.remove('dragging');
+    });
 
     todoList.appendChild(newCard);
 
     modalInput.value = ''
     modalOverlay.style.display = 'none'
+});
+
+allColumns.forEach(function(column) {
+    column.addEventListener('dragover', function(event) {
+        event.preventDefault()
+    });
+
+    column.addEventListener('drop', function() {
+        const draggingCard = document.querySelector('.dragging')
+
+        if (draggingCard) {
+            column.appendChild(draggingCard);
+        }
+    });
 });
