@@ -36,7 +36,9 @@ btnCreate.addEventListener('click', function() {
     newCard.setAttribute('draggable', 'true');
 
 
-    newCard.innerHTML = `<p>${taskText}</p>`;
+    newCard.innerHTML = `
+    <p>${taskText}</p>
+    <button class="btn-delete">&times;</button>`;
     
     newCard.addEventListener('dragstart', function() {
         newCard.classList.add('dragging');
@@ -44,6 +46,12 @@ btnCreate.addEventListener('click', function() {
 
     newCard.addEventListener('dragend', function() {
         newCard.classList.remove('dragging');
+    });
+    
+        const btnDelete = newCard.querySelector('.btn-delete');
+
+    btnDelete.addEventListener('click', function() {
+            newCard.remove()
     });
 
     todoList.appendChild(newCard);
