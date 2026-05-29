@@ -31,6 +31,7 @@ btnCreate.addEventListener('click', function() {
         return;
     }
 
+
     const newCard = document.createElement('div');
     newCard.classList.add('kanban-card');
     newCard.setAttribute('draggable', 'true');
@@ -70,6 +71,43 @@ allColumns.forEach(function(column) {
 
         if (draggingCard) {
             column.appendChild(draggingCard);
+            saveBoard();
         }
     });
 });
+
+function saveBoard() {
+    const boardData = {};
+    
+    allColumns.forEach(function(column) {
+        const columnId = column.id;
+        boardData[columnId] = [];
+        
+        const cards = column.querySelectorAll('.kanban-card');
+        cards.forEach(function(card) {
+            const taskText = card.querySelector('p').textContent;
+            boardData[columnId].push(taskText);
+        });
+    });
+    localStorage.setItem('apex-kanban-data', JSON.stringify(boardData));
+}
+
+function loadBoard() {
+    const savedData = localStorage.getItem('apex-kanban-data');
+
+    if (!savedData) return;
+
+    const boardData = JSON.parse(savedData);
+
+    for (const columnId in boardData) {
+        const column = document.getElementById(columnId);
+        
+        if (!column) continue;
+
+        boardData[columnId].forEach(function(taskText) {
+            createCardOnBoard(taskText, column)
+        });
+    }
+}
+
+loadBoard();
