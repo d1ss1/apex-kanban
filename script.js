@@ -23,6 +23,32 @@ modalOverlay.addEventListener('click', function(event) {
 });
 
 
+function createCard(taskText, column) {
+    const newCard = document.createElement('div');
+    newCard.classList.add('kanban-card');
+    newCard.setAttribute('draggable', 'true');
+
+    newCard.innerHTML = `
+    <p>${taskText}</p>
+    <button class="btn-delete">&times;</button>`;
+
+    newCard.addEventListener('dragstart', function() {
+        newCard.classList.add('dragging');
+    });
+
+    newCard.addEventListener('dragend', function() {
+        newCard.classList.remove('dragging');
+    });
+
+        const btnDelete = newCard.querySelector('.btn-delete');
+        btnDelete.addEventListener('click', function() {
+            newCard.remove()
+            saveBoard();
+    });
+    
+    column.appendChild(newCard);
+}
+
 btnCreate.addEventListener('click', function() {
     const taskText = modalInput.value.trim();
 
@@ -32,30 +58,8 @@ btnCreate.addEventListener('click', function() {
     }
 
 
-    const newCard = document.createElement('div');
-    newCard.classList.add('kanban-card');
-    newCard.setAttribute('draggable', 'true');
-
-
-    newCard.innerHTML = `
-    <p>${taskText}</p>
-    <button class="btn-delete">&times;</button>`;
-    
-    newCard.addEventListener('dragstart', function() {
-        newCard.classList.add('dragging');
-    });
-
-    newCard.addEventListener('dragend', function() {
-        newCard.classList.remove('dragging');
-    });
-    
-        const btnDelete = newCard.querySelector('.btn-delete');
-
-    btnDelete.addEventListener('click', function() {
-            newCard.remove()
-    });
-
-    todoList.appendChild(newCard);
+    createCard(taskText, todoList);
+    saveBoard()
 
     modalInput.value = ''
     modalOverlay.style.display = 'none'
@@ -105,7 +109,7 @@ function loadBoard() {
         if (!column) continue;
 
         boardData[columnId].forEach(function(taskText) {
-            createCardOnBoard(taskText, column)
+            createCard(taskText, column)
         });
     }
 }
